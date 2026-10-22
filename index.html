@@ -60,6 +60,8 @@ header{position:relative;z-index:2;background:var(--night)}
 .slide.on{opacity:1}
 .slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 7s ease-out}
 .slide.on img{transform:scale(1)}
+.slide.fit img{position:absolute;inset:0;object-fit:contain}
+.slide.fit img.bg{object-fit:cover;filter:blur(28px) brightness(.85);transform:scale(1.15)}
 .slide-tbd{display:grid;place-items:center;text-align:center;background:var(--dusk) repeating-linear-gradient(-45deg,transparent 0 16px,rgba(255,209,92,.08) 16px 32px);color:var(--moon);font-size:1.1rem}
 .slide-tbd svg{width:40px;height:40px;margin:0 auto .5rem}
 .hero .cap{position:absolute;bottom:14px;inset-inline-start:14px}
@@ -199,9 +201,9 @@ footer small{font-size:.8rem;opacity:.75}
 <main>
 <section class="hero" aria-label="תמונות מהפעילות">
   <div class="slides" id="slides">
-    <figure class="slide on"><img src="assets/img/path.jpg" alt="אבא וילדה הולכים יד ביד בשביל עפר בין גבעות ירוקות" style="object-position:35% 65%"><figcaption class="cap">תמונה להמחשה</figcaption></figure>
-    <figure class="slide"><img src="assets/img/hands.jpg" alt="יד של מבוגר מחזיקה יד של ילד על שמיכה לבנה" style="object-position:40% 50%"><figcaption class="cap">תמונה להמחשה</figcaption></figure>
-    <figure class="slide slide-tbd"><div><svg aria-hidden="true"><use href="#i-photo"/></svg>כאן תיכנס תמונה אמיתית מנופשון</div></figure>
+    <figure class="slide on"><img src="assets/img/eilat.jpg" alt="קבוצת משתתפים בנופשון, ידיים באוויר, על הטיילת באילת" style="object-position:50% 57%"></figure>
+    <figure class="slide"><img src="assets/img/ward.jpg" alt="מלווה מהעמותה משוחח וצוחק עם מטופל בחדר בבית החולים" style="object-position:50% 62%"></figure>
+    <figure class="slide fit"><img class="bg" src="assets/img/balloons.jpg" alt="" aria-hidden="true"><img src="assets/img/balloons.jpg" alt="מתנדבת מביאה בלונים ועוגה למטופל בחדרו"></figure>
   </div>
   <div class="dots" id="dots" role="group" aria-label="בחירת תמונה"></div>
 </section>
@@ -219,7 +221,7 @@ footer small{font-size:.8rem;opacity:.75}
   <p class="sub">בחרו פרויקט ותרמו ישירות אליו. בדף התרומה אפשר לבחור סכום או הוראת קבע, ולשלם באשראי או בביט.</p>
   <div class="proj">
     <article class="pj pj-lead">
-      <div class="pj-img slot"><div><svg aria-hidden="true"><use href="#i-photo"/></svg>תמונה אמיתית מנופשון – תגיע מהעמותה</div></div>
+      <figure class="pj-img shot"><img src="assets/img/zimmer.jpg" alt="זוג מחייך בחדר אבן בצימר במהלך נופשון" style="object-position:50% 30%"></figure>
       <div class="pj-body">
         <h3>נופשון</h3>
         <p>יומיים של ניתוק מהמחלקה. ילד שעובר טיפולים יוצא עם בן משפחה לשני לילות בצימר, בהמלצת העובדת הסוציאלית. שם, רחוק מהמכשירים, יש זמן לנשום, לדבר ולצבור כוח להמשך.</p>
@@ -227,7 +229,7 @@ footer small{font-size:.8rem;opacity:.75}
       </div>
     </article>
     <article class="pj">
-      <figure class="pj-img shot"><img src="assets/img/hands.jpg" alt="יד של מבוגר מחזיקה יד של ילד על שמיכה לבנה"><figcaption class="cap">תמונה להמחשה</figcaption></figure>
+      <figure class="pj-img shot"><img src="assets/img/hands-real.jpg" alt="יד מחזיקה יד של מטופל במיטת בית חולים" style="object-position:50% 55%"></figure>
       <div class="pj-body">
         <h3>סיוע כלכלי למשפחה אונקולוגית</h3>
         <p>כשהילד בטיפולים, ההורים מפסיקים לעבוד וההכנסה נעצרת. הסיוע עוזר למשפחה לעמוד בהוצאות, כדי שתוכל להתרכז בילד.</p>
@@ -283,7 +285,7 @@ footer small{font-size:.8rem;opacity:.75}
       <li><div><h3>עגלה חמה במחלקות</h3><p>כוס תה ועוגייה באמצע לילה ארוך. משהו קטן שמחמם את הלב.</p></div></li>
       <li><div><h3>מערך מתנדבים</h3><p>מתנדבים רבים שמלווים את המשפחות, מגייסים צימרים לנופשונים ועוזרים בכל מה שצריך.</p></div></li>
     </ul>
-    <div class="side slot"><div><svg aria-hidden="true"><use href="#i-photo"/></svg>תמונה אמיתית מהפעילות – תגיע מהעמותה</div></div>
+    <figure class="side"><img src="assets/img/volunteers.jpg" alt="מתנדב ומטופל בסלפי משותף" style="object-position:40% 50%"></figure>
   </div>
 </div></section>
 
