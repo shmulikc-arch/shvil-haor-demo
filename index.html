@@ -150,7 +150,7 @@ header{position:relative;z-index:2;background:#255840}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--night);color:var(--moon);padding:.8rem 1.3rem;border-radius:12px;box-shadow:0 12px 30px -10px rgba(0,0,0,.45);transition:opacity .3s,transform .4s var(--ease);z-index:50;max-width:calc(100% - 32px);text-align:center}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 /* scroll reveal: hidden only when JS runs; visible by default */
-.js .rv{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease),transform .7s var(--ease);transition-delay:var(--d,0s)}
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity 1.2s cubic-bezier(.25,.6,.3,1),transform 1.3s cubic-bezier(.25,.6,.3,1);transition-delay:var(--d,0s)}
 .js .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}}
 footer{background:var(--night);color:var(--moon-dim);font-size:.9rem}
@@ -310,7 +310,7 @@ footer small{font-size:.8rem;opacity:.75}
   ];
   groups.forEach(function(g){
     var els=[];g.forEach(function(sel){els=els.concat([].slice.call(document.querySelectorAll(sel)))});
-    els.forEach(function(el,i){el.classList.add("rv");el.style.setProperty("--d",(Math.min(i,5)*0.05)+"s")});
+    els.forEach(function(el,i){el.classList.add("rv");el.style.setProperty("--d",(Math.min(i,5)*0.1)+"s")});
   });
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.15,rootMargin:"0px 0px -8% 0px"});
   [].slice.call(document.querySelectorAll(".rv")).forEach(function(el){io.observe(el)});
