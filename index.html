@@ -53,18 +53,40 @@ nav a{color:var(--moon-dim);text-decoration:none}
 nav a:hover{color:var(--moon)}
 @media (max-width:860px){nav{display:none}}
 
-.hero{position:relative;overflow:hidden;padding-bottom:clamp(6rem,12vw,9rem);background:linear-gradient(180deg,rgba(37,88,64,.52) 0%,rgba(37,88,64,0) 28%),linear-gradient(to left,rgba(37,88,64,.9) 0%,rgba(37,88,64,.7) 40%,rgba(37,88,64,.12) 100%),url(assets/img/path.jpg) 35% 70%/cover no-repeat var(--night)}
-@media (max-width:860px){.hero{background:linear-gradient(180deg,rgba(27,68,51,.88) 0%,rgba(27,68,51,.7) 60%,rgba(27,68,51,.85) 100%),url(assets/img/path.jpg) 30% 70%/cover no-repeat var(--night)}}
-.hero .cap{position:absolute;bottom:12px;inset-inline-start:12px}
-header{position:relative;z-index:2;background:#255840}
-.lamps{background:rgba(27,68,51,.55)!important}
-.sunrise{position:absolute;width:min(760px,130vw);aspect-ratio:1;border-radius:50%;inset-inline-end:-12%;bottom:-62%;background:radial-gradient(circle,var(--noon) 0 38%,rgba(255,201,60,.22) 38.5% 52%,rgba(255,201,60,.08) 52.5% 70%,transparent 70.5%)}
-.hero .wrap{position:relative;padding-top:clamp(3rem,8vw,6.5rem)}
-.hero h1{font-size:clamp(2.8rem,7vw,6rem);font-weight:700;color:var(--moon);max-width:12ch;letter-spacing:-.01em}
-.hero h1 span{color:var(--lamp)}
-.hero .lede{font-size:clamp(1.1rem,1.8vw,1.3rem);font-weight:400;color:var(--moon-dim);max-width:40ch;margin-top:1.4rem}
-.hero .cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
-
+header{position:relative;z-index:2;background:var(--night)}
+.hero{position:relative;background:var(--night)}
+.slides{position:relative;height:clamp(340px,62vh,660px);overflow:hidden}
+.slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity 1.4s ease}
+.slide.on{opacity:1}
+.slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 7s ease-out}
+.slide.on img{transform:scale(1)}
+.slide-tbd{display:grid;place-items:center;text-align:center;background:var(--dusk) repeating-linear-gradient(-45deg,transparent 0 16px,rgba(255,209,92,.08) 16px 32px);color:var(--moon);font-size:1.1rem}
+.slide-tbd svg{width:40px;height:40px;margin:0 auto .5rem}
+.hero .cap{position:absolute;bottom:14px;inset-inline-start:14px}
+.dots{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:.5rem}
+.dots button{width:12px;height:12px;border-radius:50%;border:2px solid #fff;background:rgba(255,255,255,.25);padding:0;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.35)}
+.dots button[aria-current="true"]{background:#fff}
+.intro{background:var(--night);color:var(--moon)}
+.intro .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem 3.5rem;align-items:end;padding-block:clamp(2.5rem,5vw,4rem)}
+.intro h1{font-size:clamp(2.5rem,5.4vw,4.6rem);color:var(--moon);letter-spacing:-.01em}
+.intro h1 span{color:var(--lamp)}
+.intro .lede{font-size:clamp(1.05rem,1.6vw,1.25rem);color:var(--moon-dim);max-width:44ch}
+.intro .cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.4rem}
+@media (max-width:860px){.intro .wrap{grid-template-columns:1fr}}
+.projects .proj{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) minmax(0,1fr);gap:1.4rem;margin-top:2.4rem}
+.pj{display:flex;flex-direction:column;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 14px 34px -24px rgba(27,68,51,.55)}
+.pj .pj-img{position:relative;height:220px;border-radius:0;border:0;margin:0;padding:1rem}
+.pj.pj-lead .pj-img{height:260px}
+.pj .pj-img.slot{border-bottom:1.5px dashed rgba(30,90,62,.35)}
+.pj-img.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 50%}
+.pj-body{display:flex;flex-direction:column;gap:.6rem;padding:1.4rem 1.4rem 1.6rem;flex:1}
+.pj h3{font-size:1.45rem;color:var(--forest)}
+.pj-lead h3{font-size:1.9rem}
+.pj p{color:var(--ink-soft);flex:1}
+.pj .btn{align-self:flex-start;margin-top:.6rem}
+.pj .btn-ghost{color:var(--forest)}
+@media (max-width:960px){.projects .proj{grid-template-columns:1fr 1fr}.pj-lead{grid-column:1/-1}}
+@media (max-width:640px){.projects .proj{grid-template-columns:1fr}}
 .dusk .wrap.year-wrap{display:block;padding-top:0;padding-bottom:clamp(4rem,8vw,6.5rem)}
 .dusk .wrap.year-wrap .lamps{max-width:none}
 .lamps{margin-inline:auto;background:rgba(13,35,26,.72);border:1px solid rgba(243,238,220,.14);border-radius:20px;padding:1.6rem;display:grid;gap:1.2rem;max-width:860px;backdrop-filter:blur(4px)}
@@ -104,6 +126,7 @@ header{position:relative;z-index:2;background:#255840}
 .acts h3{font-size:1.35rem;color:var(--forest)}
 .acts p{color:var(--ink-soft);margin-top:.3rem}
 .side{position:sticky;top:1.5rem;margin:0;border-radius:16px;overflow:hidden;aspect-ratio:5/4}
+.side.slot{height:auto}
 .side img{width:100%;height:100%;object-fit:cover;object-position:35% 60%}
 @media (max-width:860px){.what-grid{grid-template-columns:1fr;gap:2rem}.acts{grid-template-columns:1fr}.side{position:relative;top:auto;aspect-ratio:16/10}}
 .photos{display:grid;grid-template-columns:1.6fr 1fr;gap:1rem;margin-top:3rem}
@@ -128,7 +151,7 @@ header{position:relative;z-index:2;background:#255840}
 .pk-row .btn-ghost{color:var(--forest)}
 .pk-row.lead{background:#FFF0C4;margin-inline:-1.2rem;padding-inline:1.2rem;border-radius:14px;border-bottom-color:transparent}
 .alt{margin-top:1.6rem;color:var(--ink-soft)}
-.trust{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:3rem;margin-top:5rem;padding-top:3rem;border-top:1px solid #E8DDBF}
+.trust{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:3rem}
 .trust ol{list-style:none;padding:0;margin:0;display:grid;gap:1.3rem;counter-reset:s}
 .trust li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:1rem;counter-increment:s}
 .trust li::before{content:counter(s);width:44px;height:44px;border-radius:50%;background:var(--forest);color:var(--day);display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:1.2rem}
@@ -169,20 +192,59 @@ footer small{font-size:.8rem;opacity:.75}
 
 <header><div class="wrap">
   <a class="brand" href="#"><img src="assets/logo/icon.svg" alt="">שביל האור לריפוי</a>
-  <nav aria-label="ניווט ראשי"><a href="#about">מי אנחנו</a><a href="#what">מה אנחנו עושים</a><a href="#give">חבילות תרומה</a><a href="#contact">צור קשר</a></nav>
+  <nav aria-label="ניווט ראשי"><a href="#give">הפרויקטים</a><a href="#about">מי אנחנו</a><a href="#what">מה אנחנו עושים</a><a href="#contact">צור קשר</a></nav>
   <a class="btn btn-sun" href="#give">לתרומה</a>
 </div></header>
 
 <main>
-<section class="hero">
-  <div class="wrap">
-    <h1>מאירים את הדרך <span>לריפוי</span></h1>
-    <p class="lede">בלילות הארוכים במחלקה, ובימים שאחריהם בבית – אנחנו מלווים ילדים חולי סרטן ואת משפחותיהם, עד שיוצאים לאור.</p>
-    <div class="cta"><a class="btn btn-sun" href="#give">אני רוצה לעזור</a><a class="btn btn-ghost" href="#contact"><svg aria-hidden="true"><use href="#i-chat"/></svg>דברו איתנו בוואטסאפ</a></div>
-
+<section class="hero" aria-label="תמונות מהפעילות">
+  <div class="slides" id="slides">
+    <figure class="slide on"><img src="assets/img/path.jpg" alt="אבא וילדה הולכים יד ביד בשביל עפר בין גבעות ירוקות" style="object-position:35% 65%"><figcaption class="cap">תמונה להמחשה</figcaption></figure>
+    <figure class="slide"><img src="assets/img/hands.jpg" alt="יד של מבוגר מחזיקה יד של ילד על שמיכה לבנה" style="object-position:40% 50%"><figcaption class="cap">תמונה להמחשה</figcaption></figure>
+    <figure class="slide slide-tbd"><div><svg aria-hidden="true"><use href="#i-photo"/></svg>כאן תיכנס תמונה אמיתית מנופשון</div></figure>
   </div>
-  <span class="cap">תמונת רקע להמחשה</span>
+  <div class="dots" id="dots" role="group" aria-label="בחירת תמונה"></div>
 </section>
+
+<section class="intro"><div class="wrap">
+  <h1>מאירים את הדרך <span>לריפוי</span></h1>
+  <div>
+    <p class="lede">אנחנו מלווים ילדים חולי סרטן ואת משפחותיהם – בנופשונים שנותנים כוח, בסיוע כלכלי ובסלי מזון – עד שיוצאים לאור.</p>
+    <div class="cta"><a class="btn btn-sun" href="#give">אני רוצה לעזור</a><a class="btn btn-ghost" href="#contact"><svg aria-hidden="true"><use href="#i-chat"/></svg>דברו איתנו בוואטסאפ</a></div>
+  </div>
+</div></section>
+
+<section class="day projects" id="give"><div class="wrap">
+  <h2>הפרויקטים שלנו</h2>
+  <p class="sub">בחרו פרויקט ותרמו ישירות אליו. בדף התרומה אפשר לבחור סכום או הוראת קבע, ולשלם באשראי או בביט.</p>
+  <div class="proj">
+    <article class="pj pj-lead">
+      <div class="pj-img slot"><div><svg aria-hidden="true"><use href="#i-photo"/></svg>תמונה אמיתית מנופשון – תגיע מהעמותה</div></div>
+      <div class="pj-body">
+        <h3>נופשון</h3>
+        <p>יומיים של ניתוק מהמחלקה. ילד שעובר טיפולים יוצא עם בן משפחה לשני לילות בצימר, בהמלצת העובדת הסוציאלית. שם, רחוק מהמכשירים, יש זמן לנשום, לדבר ולצבור כוח להמשך.</p>
+        <a class="btn btn-orange" href="#" data-demo="דף הפרויקט 'נופשון' בפיץ'">לתרומה לנופשון</a>
+      </div>
+    </article>
+    <article class="pj">
+      <figure class="pj-img shot"><img src="assets/img/hands.jpg" alt="יד של מבוגר מחזיקה יד של ילד על שמיכה לבנה"><figcaption class="cap">תמונה להמחשה</figcaption></figure>
+      <div class="pj-body">
+        <h3>סיוע כלכלי למשפחה אונקולוגית</h3>
+        <p>כשהילד בטיפולים, ההורים מפסיקים לעבוד וההכנסה נעצרת. הסיוע עוזר למשפחה לעמוד בהוצאות, כדי שתוכל להתרכז בילד.</p>
+        <a class="btn btn-ghost" href="#" data-demo="דף הפרויקט 'סיוע כלכלי' בפיץ'">לתרומה לסיוע כלכלי</a>
+      </div>
+    </article>
+    <article class="pj">
+      <div class="pj-img slot"><div><svg aria-hidden="true"><use href="#i-photo"/></svg>תמונה של סלי מזון</div></div>
+      <div class="pj-body">
+        <h3>סל מזון</h3>
+        <p>כשההורים ליד מיטת הילד, המקרר בבית מתרוקן. סל מזון קבוע מוריד מהם דאגה אחת.</p>
+        <a class="btn btn-ghost" href="#" data-demo="דף הפרויקט 'סל מזון' בפיץ'">לתרומה לסל מזון</a>
+      </div>
+    </article>
+  </div>
+  <p class="alt">אפשר לתרום גם בהעברה בנקאית: בנק הפועלים (12), סניף 000, חשבון 000000, על שם "שביל האור לריפוי (ע"ר)".</p>
+</div></section>
 
 <section class="dusk" id="about"><div class="wrap">
   <h2>כשילד חולה, כל המשפחה נכנסת איתו למחלקה</h2>
@@ -214,35 +276,23 @@ footer small{font-size:.8rem;opacity:.75}
   <h2>האור שאנחנו מביאים</h2>
   <div class="what-grid">
     <ul class="acts">
-      <li><div><h3>ליווי לאורך השנה</h3><p>משפחה נתמכת מקבלת תמיכה חודשית קבועה ויד מושטת לאורך כל התקופה.</p></div></li>
-      <li><div><h3>סיוע תרופתי</h3><p>מימון תרופות שאינן בסל הבריאות, כדי שכסף לא יעמוד בין ילד לטיפול.</p></div></li>
+      <li><div><h3>נופשונים</h3><p>ילדים שעוברים טיפולים יוצאים עם בן משפחה ליומיים של ניתוק בצימר. זו הפעילות שהכי מזוהה איתנו.</p></div></li>
+      <li><div><h3>סיוע כלכלי</h3><p>עזרה למשפחות שההכנסה שלהן נעצרה, כדי שיוכלו להתרכז בילד.</p></div></li>
       <li><div><h3>סלי מזון</h3><p>כשההורים ליד מיטת הילד, המקרר מתרוקן. סל קבוע מוריד דאגה אחת.</p></div></li>
-      <li><div><h3>נופשון שיקומי</h3><p>כמה ימים של הפוגה לילדים שאושפזו השנה, עם מלווה צמוד למי שצריך.</p></div></li>
+      <li><div><h3>סיוע תרופתי</h3><p>מימון תרופות שאינן בסל הבריאות, כדי שכסף לא יעמוד בין ילד לטיפול.</p></div></li>
       <li><div><h3>עגלה חמה במחלקות</h3><p>כוס תה ועוגייה באמצע לילה ארוך. משהו קטן שמחמם את הלב.</p></div></li>
-      <li><div><h3>נוכחות בשטח</h3><p>הצוות שלנו נמצא במחלקות 24/7, ליד המשפחות כשהן צריכות.</p></div></li>
+      <li><div><h3>מערך מתנדבים</h3><p>מתנדבים רבים שמלווים את המשפחות, מגייסים צימרים לנופשונים ועוזרים בכל מה שצריך.</p></div></li>
     </ul>
-    <figure class="side"><img src="assets/img/cart.jpg" alt="עגלה עם תה חם ועוגיות במסדרון של מחלקת ילדים בלילה"><figcaption class="cap">תמונה להמחשה</figcaption></figure>
+    <div class="side slot"><div><svg aria-hidden="true"><use href="#i-photo"/></svg>תמונה אמיתית מהפעילות – תגיע מהעמותה</div></div>
   </div>
 </div></section>
 
-<section class="day" id="give"><div class="wrap">
-  <h2>בחרו איך להאיר</h2>
-  <p class="sub">כל תרומה מגיעה למקום מוגדר. כל כפתור מוביל לדף התרומה של החבילה, ושם אפשר לשלם בכרטיס אשראי או בביט.</p>
-  <div class="pk">
-    <div class="pk-row lead"><h3>ליווי מלא למשפחה</h3><p>תמיכה קבועה כל חודש למשפחה שבה ילד חולה, אחים בבית והורים תחת עומס.</p><p class="price num">540 ₪<small>לחודש × 12</small></p><a class="btn btn-orange" href="#" data-demo="דף התרומה של החבילה">אני מלווה משפחה</a></div>
-    <div class="pk-row"><h3>ליווי לילד</h3><p>תמיכה ישירה בילד החולה לאורך תקופת הטיפולים.</p><p class="price num">180 ₪<small>לחודש × 12</small></p><a class="btn btn-ghost" href="#" data-demo="דף התרומה של החבילה">אני מלווה ילד</a></div>
-    <div class="pk-row"><h3>סל מזון</h3><p>סל מלא למשפחה שקשה לה למלא את המקרר.</p><p class="price num">250 ₪<small>לסל</small></p><a class="btn btn-ghost" href="#" data-demo="דף התרומה של החבילה">אני תורם סל</a></div>
-    <div class="pk-row"><h3>נופשון לילד</h3><p>מקום לילד בנופשון החורף, כולל מלווה צמוד במידת הצורך.</p><p class="price num">1,800 ₪<small>לילד</small></p><a class="btn btn-ghost" href="#" data-demo="דף התרומה של החבילה">אני שולח ילד</a></div>
-    <div class="pk-row"><h3>סיוע תרופתי</h3><p>השתתפות במימון תרופות שאינן בסל הבריאות.</p><p class="price num">500 ₪<small>תרומה חד-פעמית</small></p><a class="btn btn-ghost" href="#" data-demo="דף התרומה של החבילה">אני עוזר בתרופות</a></div>
-    <div class="pk-row"><h3>תרומה חופשית</h3><p>התרומה תופנה למקום שהכי צריך אותה עכשיו.</p><p class="price" style="font-size:1.1rem">כל סכום</p><a class="btn btn-ghost" href="#" data-demo="דף התרומה של החבילה">לתרומה</a></div>
-  </div>
-  <p class="alt">אפשר לתרום גם בהעברה בנקאית: בנק הפועלים (12), סניף 000, חשבון 000000, על שם "שביל האור לריפוי (ע"ר)".</p>
-
+<section class="day" id="trust-sec"><div class="wrap">
   <div class="trust" id="trust">
     <div>
       <h2>התרומה שלכם בידיים טובות</h2>
       <p class="sub">כל משפחה שאנחנו מלווים עוברת בדיקה, כדי שהעזרה תגיע למי שבאמת צריך.</p>
-      <div class="facts"><span><svg aria-hidden="true"><use href="#i-check"/></svg>אישור ניהול תקין</span><span><svg aria-hidden="true"><use href="#i-check"/></svg>עמותה רשומה <span class="num">580826253</span></span><span><svg aria-hidden="true"><use href="#i-check"/></svg>נוכחות בשטח 24/7</span></div>
+      <div class="facts"><span><svg aria-hidden="true"><use href="#i-check"/></svg>אישור ניהול תקין</span><span><svg aria-hidden="true"><use href="#i-check"/></svg>עמותה רשומה <span class="num">580826253</span></span></div>
     </div>
     <ol>
       <li><div><h3>הפניה מעובדת סוציאלית</h3><p>המשפחה מגיעה אלינו דרך הגורם המטפל.</p></div></li>
@@ -297,14 +347,27 @@ footer small{font-size:.8rem;opacity:.75}
 </script>
 <script>
 (function(){
+  var slides=[].slice.call(document.querySelectorAll(".slide")),dots=document.getElementById("dots"),cur=0,timer;
+  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function go(n){slides[cur].classList.remove("on");dots.children[cur].removeAttribute("aria-current");cur=(n+slides.length)%slides.length;slides[cur].classList.add("on");dots.children[cur].setAttribute("aria-current","true");}
+  slides.forEach(function(sl,i){var b=document.createElement("button");b.type="button";b.setAttribute("aria-label","תמונה "+(i+1));b.addEventListener("click",function(){go(i);restart();});dots.appendChild(b);});
+  dots.children[0].setAttribute("aria-current","true");
+  function restart(){clearInterval(timer);if(!reduce)timer=setInterval(function(){go(cur+1)},5500);}
+  var hero=document.querySelector(".hero");hero.addEventListener("mouseenter",function(){clearInterval(timer)});hero.addEventListener("mouseleave",restart);
+  restart();
+})();
+</script>
+<script>
+(function(){
   if(!("IntersectionObserver" in window))return;
   document.documentElement.classList.add("js");
   var groups=[
-    [".hero h1",".hero .lede",".hero .cta"],
+    [".intro h1",".intro .lede",".intro .cta"],
+    [".projects h2",".projects .sub"],[".pj"],
     [".dusk h2",".dusk p.big",".dusk .wrap > div > p:not(.big)"],
     [".lamps"],
     [".dawn h2"],[".acts li"],[".side"],
-    [".day h2",".day .sub"],[".pk-row"],[".alt"],
+    [".alt"],
     [".trust h2",".trust .sub",".facts"],[".trust li"],
     [".noon h2",".noon p",".noon .btn"],[".way"]
   ];
