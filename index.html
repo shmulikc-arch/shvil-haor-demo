@@ -149,6 +149,10 @@ header{position:relative;z-index:2;background:#255840}
 @media (max-width:860px){.noon .wrap{grid-template-columns:1fr}}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--night);color:var(--moon);padding:.8rem 1.3rem;border-radius:12px;box-shadow:0 12px 30px -10px rgba(0,0,0,.45);transition:opacity .3s,transform .4s var(--ease);z-index:50;max-width:calc(100% - 32px);text-align:center}
 .toast.show{opacity:1;transform:translate(-50%,0)}
+/* scroll reveal: hidden only when JS runs; visible by default */
+.js .rv{opacity:0;transform:translateY(36px);transition:opacity .9s var(--ease),transform 1s var(--ease);transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}}
 footer{background:var(--night);color:var(--moon-dim);font-size:.9rem}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.8rem 2rem;padding-block:1.4rem}
 footer .credit{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.15rem}
@@ -289,6 +293,27 @@ footer small{font-size:.8rem;opacity:.75}
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){light();io.disconnect();}})},{threshold:.45});
     io.observe(panel);
   } else light();
+})();
+</script>
+<script>
+(function(){
+  if(!("IntersectionObserver" in window))return;
+  document.documentElement.classList.add("js");
+  var groups=[
+    [".hero h1",".hero .lede",".hero .cta"],
+    [".dusk h2",".dusk p.big",".dusk .wrap > div > p:not(.big)"],
+    [".lamps"],
+    [".dawn h2"],[".acts li"],[".side"],
+    [".day h2",".day .sub"],[".pk-row"],[".alt"],
+    [".trust h2",".trust .sub",".facts"],[".trust li"],
+    [".noon h2",".noon p",".noon .btn"],[".way"]
+  ];
+  groups.forEach(function(g){
+    var els=[];g.forEach(function(sel){els=els.concat([].slice.call(document.querySelectorAll(sel)))});
+    els.forEach(function(el,i){el.classList.add("rv");el.style.setProperty("--d",(Math.min(i,6)*0.09)+"s")});
+  });
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.15,rootMargin:"0px 0px -8% 0px"});
+  [].slice.call(document.querySelectorAll(".rv")).forEach(function(el){io.observe(el)});
 })();
 </script>
 </body>
