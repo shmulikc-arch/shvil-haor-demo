@@ -165,7 +165,9 @@ header{position:relative;z-index:2;background:var(--night)}
 .noon .btn{margin-top:1.6rem;background:var(--night);color:var(--moon)}
 .noon .btn:hover{background:#173D2C}
 .ways{display:grid}
-.way{display:flex;justify-content:space-between;padding-block:.9rem;border-bottom:1.5px solid rgba(13,35,26,.2)}
+.way{display:flex;justify-content:space-between;gap:1rem;padding-block:.9rem;border-bottom:1.5px solid rgba(13,35,26,.2)}
+.way a{color:var(--night);font-weight:600;text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
+.way a:hover{text-decoration-thickness:2px}
 @media (max-width:860px){.noon .wrap{grid-template-columns:1fr}}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--night);color:var(--moon);padding:.8rem 1.3rem;border-radius:12px;box-shadow:0 12px 30px -10px rgba(0,0,0,.45);transition:opacity .3s,transform .4s var(--ease);z-index:50;max-width:calc(100% - 32px);text-align:center}
 .toast.show{opacity:1;transform:translate(-50%,0)}
@@ -209,7 +211,7 @@ footer small{font-size:.8rem;opacity:.75}
   <h1>מאירים את הדרך <span>לריפוי</span></h1>
   <div>
     <p class="lede">אנחנו מלווים ילדים חולי סרטן ואת משפחותיהם – בנופשונים שנותנים כוח, בסיוע כלכלי ובסלי מזון – עד שיוצאים לאור.</p>
-    <div class="cta"><a class="btn btn-sun" href="#give">אני רוצה לעזור</a><a class="btn btn-ghost" href="#contact"><svg aria-hidden="true"><use href="#i-chat"/></svg>דברו איתנו בוואטסאפ</a></div>
+    <div class="cta"><a class="btn btn-sun" href="#give">אני רוצה לעזור</a><a class="btn btn-ghost" href="https://wa.me/972547644997" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-chat"/></svg>דברו איתנו בוואטסאפ</a></div>
   </div>
 </div></section>
 
@@ -305,12 +307,12 @@ footer small{font-size:.8rem;opacity:.75}
   <div>
     <h2>רוצים לשמוע עוד? אנחנו כאן</h2>
     <p>שאלה על הפעילות, התלבטות בין חבילות או רצון להתנדב – כתבו לנו ונחזור אליכם.</p>
-    <a class="btn" href="#" data-demo="שיחת וואטסאפ עם המוקד"><svg aria-hidden="true"><use href="#i-chat"/></svg>כתבו לנו בוואטסאפ</a>
+    <a class="btn" href="https://wa.me/972547644997" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-chat"/></svg>כתבו לנו בוואטסאפ</a>
   </div>
   <div class="ways">
-    <div class="way"><b>וואטסאפ</b><span class="num" dir="ltr">050-000-0000</span></div>
-    <div class="way"><b>טלפון</b><span class="num" dir="ltr">03-000-0000</span></div>
-    <div class="way"><b>מייל</b><span dir="ltr">info@shvil-haor.org.il</span></div>
+    <div class="way"><b>רכזת פרויקטים – טלפון</b><a class="num" dir="ltr" href="tel:+972547644997">054-7644997</a></div>
+    <div class="way"><b>וואטסאפ</b><a class="num" dir="ltr" href="https://wa.me/972547644997" target="_blank" rel="noopener">054-7644997</a></div>
+    <div class="way"><b>מייל</b><a dir="ltr" href="mailto:shvil.aaor@gmail.com">shvil.aaor@gmail.com</a></div>
   </div>
 </div></section>
 </main>
