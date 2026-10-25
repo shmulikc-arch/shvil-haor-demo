@@ -62,15 +62,9 @@ nav a:hover{color:var(--moon)}
 
 header{position:relative;z-index:2;background:var(--night)}
 .hero{position:relative;background:var(--night)}
-.slides{position:relative;height:clamp(340px,62vh,660px);overflow:hidden}
-.slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .7s ease}
-.slide.on{opacity:1}
-.slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 3s ease-out}
-.slide.on img{transform:scale(1)}
-.slide.fit img{position:absolute;inset:0;object-fit:contain}
-.slide.fit img.bg{object-fit:cover;filter:blur(28px) brightness(.85);transform:scale(1.15)}
-.slide-tbd{display:grid;place-items:center;text-align:center;background:var(--dusk) repeating-linear-gradient(-45deg,transparent 0 16px,rgba(255,209,92,.08) 16px 32px);color:var(--moon);font-size:1.1rem}
-.slide-tbd svg{width:40px;height:40px;margin:0 auto .5rem}
+.slides{position:relative;height:min(62vh,56.25vw);min-height:220px;overflow:hidden;background:var(--night)}
+.hero-video{display:block;width:100%;height:100%;object-fit:cover}
+@media (max-width:700px){.slides{height:auto;aspect-ratio:1/1;min-height:0}}
 .intro{background:var(--night);color:var(--moon)}
 .intro .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem 3.5rem;align-items:end;padding-block:clamp(2.5rem,5vw,4rem)}
 .intro h1{font-size:clamp(2.5rem,5.4vw,4.6rem);color:var(--moon);letter-spacing:-.01em}
@@ -204,13 +198,10 @@ footer small{font-size:.8rem;opacity:.75}
 
 <main>
 <section class="hero" aria-label="תמונות מהפעילות">
-  <div class="slides" id="slides">
-    <figure class="slide on"><img src="assets/img/eilat.jpg" alt="קבוצת משתתפים בנופשון, ידיים באוויר, על הטיילת באילת" style="object-position:50% 57%"></figure>
-    <figure class="slide"><img src="assets/img/porch.jpg" alt="ילד בכובע צוחק עם אבא שלו במרפסת של צימר מול נוף הגליל" style="object-position:50% 35%"></figure>
-    <figure class="slide"><img src="assets/img/girl.jpg" alt="ילדה בבית החולים משחקת קלפים עם מתנדבת" style="object-position:50% 45%"></figure>
-    <figure class="slide"><img src="assets/img/bench.jpg" alt="זוג יושב על ספסל בטיילת באילת ומביט לים" style="object-position:50% 40%"></figure>
-    <figure class="slide"><img src="assets/img/ward.jpg" alt="מלווה מהעמותה משוחח וצוחק עם מטופל בחדר בבית החולים" style="object-position:50% 62%"></figure>
-    <figure class="slide fit"><img class="bg" src="assets/img/balloons.jpg" alt="" aria-hidden="true"><img src="assets/img/balloons.jpg" alt="מתנדבת מביאה בלונים ועוגה למטופל בחדרו"></figure>
+  <div class="slides">
+    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-poster.jpg" aria-label="סרטון מהפעילות: נופשונים, ליווי במחלקה ורגעי שמחה">
+      <source src="assets/video/hero.mp4" type="video/mp4">
+    </video>
   </div>
 </section>
 
@@ -355,12 +346,8 @@ footer small{font-size:.8rem;opacity:.75}
 </script>
 <script>
 (function(){
-  var slides=[].slice.call(document.querySelectorAll(".slide")),cur=0,timer;
-  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
-  function go(n){slides[cur].classList.remove("on");cur=(n+slides.length)%slides.length;slides[cur].classList.add("on");}
-  function restart(){clearInterval(timer);if(!reduce)timer=setInterval(function(){go(cur+1)},2500);}
-  var hero=document.querySelector(".hero");hero.addEventListener("mouseenter",function(){clearInterval(timer)});hero.addEventListener("mouseleave",restart);
-  restart();
+  var v=document.getElementById("heroVideo");
+  if(v&&matchMedia("(prefers-reduced-motion: reduce)").matches){v.removeAttribute("autoplay");v.pause();}
 })();
 </script>
 <script>
