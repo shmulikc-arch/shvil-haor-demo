@@ -66,9 +66,10 @@ nav a:hover{color:var(--moon)}
 
 header{position:relative;z-index:2;background:var(--night)}
 .hero{position:relative;background:var(--night)}
-.slides{position:relative;height:min(62vh,56.25vw);min-height:220px;overflow:hidden;background:var(--night)}
-@media (max-width:700px){.slides{height:auto;aspect-ratio:1/1;min-height:0}}
+.slides{position:relative;aspect-ratio:12/5;max-height:72vh;width:100%;overflow:hidden;background:var(--night)}
 .hero-video{display:block;width:100%;height:100%;object-fit:cover}
+.hero-video.m{display:none}
+@media (max-width:700px){.slides{aspect-ratio:1/1;max-height:none}.hero-video.d{display:none}.hero-video.m{display:block}}
 
 .intro{background:var(--night);color:var(--moon)}
 .intro .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem 3.5rem;align-items:end;padding-block:clamp(2.5rem,5vw,4rem)}
@@ -204,9 +205,8 @@ footer small{font-size:.8rem;opacity:.75}
 <main>
 <section class="hero" aria-label="תמונות מהפעילות">
   <div class="slides">
-    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-poster.jpg" aria-label="סרטון מהפעילות: נופשונים, ליווי במחלקה ורגעי שמחה">
-      <source src="assets/video/hero.mp4" type="video/mp4">
-    </video>
+    <video class="hero-video d" muted loop playsinline preload="none" poster="assets/img/hero-desktop-poster.jpg" aria-label="סרטון מהפעילות: נופשונים, ליווי במחלקה ורגעי שמחה"><source src="assets/video/hero-desktop.mp4" type="video/mp4"></video>
+    <video class="hero-video m" muted loop playsinline preload="none" poster="assets/img/hero-mobile-poster.jpg" aria-label="סרטון מהפעילות: נופשונים, ליווי במחלקה ורגעי שמחה"><source src="assets/video/hero-mobile.mp4" type="video/mp4"></video>
   </div>
 </section>
 
@@ -351,8 +351,11 @@ footer small{font-size:.8rem;opacity:.75}
 </script>
 <script>
 (function(){
-  var v=document.getElementById("heroVideo");
-  if(v&&matchMedia("(prefers-reduced-motion: reduce)").matches){v.removeAttribute("autoplay");v.pause();}
+  var mobile=matchMedia("(max-width:700px)").matches;
+  var keep=document.querySelector(".hero-video."+(mobile?"m":"d")),drop=document.querySelector(".hero-video."+(mobile?"d":"m"));
+  if(drop)drop.remove();
+  if(!keep||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  keep.preload="auto";var p=keep.play();if(p&&p.catch)p.catch(function(){});
 })();
 </script>
 <script>
