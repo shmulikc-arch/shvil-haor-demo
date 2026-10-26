@@ -117,6 +117,8 @@ header{position:relative;z-index:2;background:var(--night)}
 @media (max-width:700px){.row12{grid-template-columns:repeat(6,minmax(0,1fr));row-gap:1rem}}
 
 .dusk{background:var(--dusk);color:var(--moon)}
+.dusk{position:relative;z-index:1;border-bottom-left-radius:clamp(56px,9vw,160px)}
+.dusk+.dawn{margin-top:calc(-1*clamp(56px,9vw,160px));padding-top:clamp(56px,9vw,160px)}
 .dusk .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:3rem;padding-block:clamp(4rem,8vw,6.5rem)}
 .dusk h2{font-size:clamp(2rem,3.6vw,2.9rem);color:var(--lamp)}
 .dusk p{color:var(--moon-dim)}
